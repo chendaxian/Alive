@@ -1,0 +1,25 @@
+@media (max-width: 760px) {
+    .m-top-5 {
+        margin-top: 5px;
+    }
+      
+    .m-bottom-5 {
+        margin-bottom: 5px;
+    }
+      
+    .m-5 {
+        margin: 5px;
+    }
+      
+    .m-top-bottom-5 {
+        margin: 5px 0 !important;
+    }
+
+    .p-l-10 {
+        padding-left: 10px;
+    }
+
+    .p-l-20 {
+        padding-left: 20px !important;
+    }
+}

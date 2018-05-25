@@ -1,0 +1,6 @@
+.checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline{
+    margin-left: 0px;
+}
+.form-horizontal .checkbox, .form-horizontal .checkbox-inline, .form-horizontal .radio, .form-horizontal .radio-inline{
+    width: 120px;
+}

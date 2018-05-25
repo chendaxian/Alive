@@ -9,5 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
+    const PAGINATENUM = 10;
+
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }
