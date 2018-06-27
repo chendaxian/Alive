@@ -6,6 +6,7 @@
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
     <meta name="author" content="Coderthemes">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{URL::asset('img/logo.jpg')}}">
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
 
     <title>悦享工作台</title>

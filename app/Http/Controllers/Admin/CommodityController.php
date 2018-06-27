@@ -13,4 +13,9 @@ class CommodityController extends Controller
         $data = DB::table('commodity')->paginate(self::PAGINATENUM);
         return view('admin/commodity/index', ['data'=>$data]);
     }
+
+    public function add()
+    {
+        return view('admin/commodity/add');
+    }
 }

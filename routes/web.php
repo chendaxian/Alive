@@ -12,16 +12,6 @@
 */
 Auth::routes();
 
-// 微信秒杀
-Route::group([
-        'namespace' => 'Client', 
-    ], function ($router)
-{
-    $router::get('/seckill', 'SecKillController@index');
-    $router::post('/formSubmit', 'SecKillController@formSubmit');
-    $router::get('/getInfo', 'SecKillController@getInfo');
-});
-
 // 工作台
 Route::group([
         'prefix' => 'admin',
@@ -33,5 +23,8 @@ Route::group([
     $router::get('/home', ['as'=>'home', 'uses'=>'HomeController@index']);
     // 秒杀商品管理
     $router::get('/commodities', ['as'=>'commodities', 'uses'=>'CommodityController@index']);
+    // 商品新增
+    $router::get('/commodityAdd', ['as'=>'commodityAdd', 'uses'=>'CommodityController@add']);
+
 });
 
