@@ -38,4 +38,9 @@ class SecKillController extends Controller
         }
         return response()->json(['result'=>$res]);
     }
+
+    public function getInfo()
+    {
+        return response()->json(['result'=>['code'=>200, 'msg'=>'ok']]);
+    }
 }

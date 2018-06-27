@@ -19,6 +19,7 @@ Route::group([
 {
     $router::get('/seckill', 'SecKillController@index');
     $router::post('/formSubmit', 'SecKillController@formSubmit');
+    $router::get('/getInfo', 'SecKillController@getInfo');
 });
 
 // 工作台
