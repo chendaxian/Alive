@@ -21,10 +21,11 @@ Route::group([
 {
     // 后台首页
     $router::get('/home', ['as'=>'home', 'uses'=>'HomeController@index']);
-    // 秒杀商品管理
+    // 商品管理
     $router::get('/commodities', ['as'=>'commodities', 'uses'=>'CommodityController@index']);
-    // 商品新增
     $router::get('/commodityAdd', ['as'=>'commodityAdd', 'uses'=>'CommodityController@add']);
-
+    $router::post('/commodityStore', ['as'=>'commodityStore', 'uses'=>'CommodityController@store']);
+    $router::post('/commodityUpdate', ['as'=>'commodityUpdate', 'uses'=>'CommodityController@update']);
+    $router::get('/commodityDelete/{id}', ['as'=>'commodityDelete', 'uses'=>'CommodityController@delete']);
 });
 

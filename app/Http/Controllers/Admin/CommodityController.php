@@ -3,19 +3,44 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Commodity;
+use App\Traits\UploadFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CommodityController extends Controller
 {
+    use UploadFile;
+
     public function index()
     {
-        $data = DB::table('commodity')->paginate(self::PAGINATENUM);
+        $data = Commodity::paginate(self::PAGINATENUM);
         return view('admin/commodity/index', ['data'=>$data]);
     }
 
     public function add()
     {
         return view('admin/commodity/add');
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        $data['img'] = $this->uploadImg($request->file('img'), '/uploads/');
+        $row = new Commodity();
+        $row->create($data);
+
+        return redirect(route('commodities'));
+    }
+
+    public function update(Request $request)
+    {
+        dd($request->all());
+    }
+
+    public function delete($id)
+    {
+        Commodity::find($id)->delete();
+        return redirect(route('commodities'));
     }
 }

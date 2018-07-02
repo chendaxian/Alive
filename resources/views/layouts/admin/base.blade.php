@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="{{URL::asset('img/logo.jpg')}}">
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
 
-    <title>悦享工作台</title>
+    <title>悦享小程序工作后台</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">

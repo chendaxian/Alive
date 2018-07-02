@@ -112,7 +112,7 @@
                                     <thead>
                                         <tr>
                                             <th>序</th>
-                                            <th>商品标题</th>
+                                            <th>商品名称</th>
                                             <th>商品售价(￥)</th>
                                             <th>物流费用(￥)</th> 
                                             <th>商品销量</th>
@@ -127,8 +127,8 @@
                                         @foreach($data as $v)
                                             <tr>
                                                 <td>{{$v->id}}</td>
-                                                <td style="max-width: 200px;" class="overHidden">{{$v->title}}</td>
-                                                <td>{{$v->original_price}}</td>
+                                                <td style="max-width: 200px;" class="overHidden">{{$v->name}}</td>
+                                                <td>{{$v->price}}</td>
                                                 <td>{{$v->express_price}}</td>
                                                 <td>{{$v->sale_amounts}}</td>
                                                 <td>{{$v->location}}</td>
@@ -142,6 +142,9 @@
                                                 <td>{{$v->created_at}}</td>
                                                 <td>
                                                     <button class="btn btn-info" onclick="editCommodity()">编辑</button>
+                                                    <a href="{{ route('commodityDelete', ['id' => $v->id]) }}">
+                                                        <button class="btn btn-danger" onclick="">删除</button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach()
