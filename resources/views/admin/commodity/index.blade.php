@@ -13,7 +13,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading row">
                     <div class="col-sm-6">
-                        <h4>秒杀商品列表</h4>
+                        <h4>商品列表</h4>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -113,9 +113,8 @@
                                         <tr>
                                             <th>序</th>
                                             <th>商品标题</th>
-                                            <th>商品原价(￥)</th>
-                                            <th>商品秒杀价(￥)</th>
-                                            <th>物流费(￥)</th> 
+                                            <th>商品售价(￥)</th>
+                                            <th>物流费用(￥)</th> 
                                             <th>商品销量</th>
                                             <th>商品始发地</th>
                                             <th>上架情况</th>
@@ -130,7 +129,6 @@
                                                 <td>{{$v->id}}</td>
                                                 <td style="max-width: 200px;" class="overHidden">{{$v->title}}</td>
                                                 <td>{{$v->original_price}}</td>
-                                                <td>{{$v->present_price}}</td>
                                                 <td>{{$v->express_price}}</td>
                                                 <td>{{$v->sale_amounts}}</td>
                                                 <td>{{$v->location}}</td>
@@ -191,7 +189,7 @@
                     </div>
                     <div class="row m-t-5">
                         <div class="col-md-2 text-right">
-                            <span>商品原价：</span>
+                            <span>商品售价：</span>
                         </div>
                         <div class="col-md-10">
                             <input type="text" name="original_price" class="form-control">
@@ -199,15 +197,7 @@
                     </div>
                     <div class="row m-t-5">
                         <div class="col-md-2 text-right">
-                            <span>秒杀价：</span>
-                        </div>
-                        <div class="col-md-10">
-                            <input type="text" name="present_price" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row m-t-5">
-                        <div class="col-md-2 text-right">
-                            <span>物流费：</span>
+                            <span>物流费用：</span>
                         </div>
                         <div class="col-md-10">
                             <input type="text" name="express_price" class="form-control">
@@ -236,9 +226,17 @@
                         <div class="col-md-10">
                             <select class="form-control" name="is_shelves">
                                 <option value="">请选择上架情况</option>
-                                <option value="0">未上架</option>
-                                <option value="1">上架中</option>
+                                <option value="0">上架</option>
+                                <option value="1">下架</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="row m-t-5">
+                        <div class="col-md-2 text-right">
+                            <span>商品预览：</span>
+                        </div>
+                        <div class="col-md-10">
+                            <img width="200px" height="200px" src="{{URL::asset('img/test.jpg')}}">
                         </div>
                     </div>
                 </div>

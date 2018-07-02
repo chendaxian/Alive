@@ -24,17 +24,6 @@
                 </ul>
             </li>
         </ul>
-
-        <ul class="list-unstyled">
-            <li class="has-submenu">
-                <a href="#"><i class="fa fa-reorder"></i>
-                    <span class="nav-label">秒杀参与者管理</span>
-                </a>
-                <ul class="list-unstyled">
-                    <li><a href="">秒杀参与列表</a></li>
-                </ul>
-            </li>
-        </ul>
     </nav>
 
 </aside>
