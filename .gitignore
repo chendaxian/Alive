@@ -1,3 +1,5 @@
 /storage
-vendor/
 .env
+/public/uploads
+/public/assets
+/vendor
