@@ -35,7 +35,13 @@ class CommodityController extends Controller
 
     public function update(Request $request)
     {
-        dd($request->all());
+        $data = $request->except('hiddenId');
+        $id = $request->hiddenId;
+        if (isset($data['img'])) {
+            $data['img'] = $this->uploadImg($request->file('img'), '/uploads/');
+        }
+        Commodity::findOrFail($id)->update($data);
+        return redirect(route('commodities'));
     }
 
     public function delete($id)

@@ -142,9 +142,9 @@
                                                 <td>{{$v->created_at}}</td>
                                                 <td>
                                                     <button class="btn btn-info" onclick="editCommodity('{{$v->id}}', '{{$v->name}}', '{{$v->price}}', '{{$v->express_price}}', '{{$v->sale_amounts}}', '{{$v->location}}', '{{$v->is_shelves}}', '{{$v->img}}')">编辑</button>
-                                                    <a href="{{ route('commodityDelete', ['id' => $v->id]) }}">
-                                                        <button class="btn btn-danger" onclick="">删除</button>
-                                                    </a>
+                                                    {{-- <a href="{{ route('commodityDelete', ['id' => $v->id]) }}"> --}}
+                                                        <button class="btn btn-danger" onclick="deleteCommodity('{{ route('commodityDelete', ['id' => $v->id]) }}')">删除</button>
+                                                    {{-- </a> --}}
                                                 </td>
                                             </tr>
                                         @endforeach()
@@ -182,80 +182,84 @@
                     <h4 class="modal-title">商品编辑预览</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-3 text-right">
-                            <span>商品名称:</span>
+                    <form id="updateForm" method="post" action="{{ route('commodityUpdate') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-md-3 text-right">
+                                <span>商品名称:</span>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="hidden" id="hiddenId" name="hiddenId">
+                                <input class="form-control" id="name" name="name">
+                            </div>
                         </div>
-                        <div class="col-md-9">
-                            <input class="form-control" id="name" name="name">
+                        <div class="row m-t-5">
+                            <div class="col-md-3 text-right">
+                                <span>商品售价(￥):</span>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="price" name="price" class="form-control">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row m-t-5">
-                        <div class="col-md-3 text-right">
-                            <span>商品售价(￥):</span>
+                        <div class="row m-t-5">
+                            <div class="col-md-3 text-right">
+                                <span>物流费用(￥):</span>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="express_price" name="express_price" class="form-control">
+                            </div>
                         </div>
-                        <div class="col-md-9">
-                            <input type="text" id="price" name="price" class="form-control">
+                        <div class="row m-t-5">
+                            <div class="col-md-3 text-right">
+                                <span>商品销量:</span>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="sale_amounts" name="sale_amounts" class="form-control">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row m-t-5">
-                        <div class="col-md-3 text-right">
-                            <span>物流费用(￥):</span>
+                        <div class="row m-t-5">
+                            <div class="col-md-3 text-right">
+                                <span>始发地:</span>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="location" name="location" class="form-control">
+                            </div>
                         </div>
-                        <div class="col-md-9">
-                            <input type="text" id="express_price" name="express_price" class="form-control">
+                        <div class="row m-t-5">
+                            <div class="col-md-3 text-right">
+                                <span>上架情况:</span>
+                            </div>
+                            <div class="col-md-9">
+                                <select class="form-control" id="is_shelves" name="is_shelves">
+                                    <option value="">请选择上架情况</option>
+                                    <option value="0">下架</option>
+                                    <option value="1">上架</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row m-t-5">
-                        <div class="col-md-3 text-right">
-                            <span>商品销量:</span>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" id="sale_amounts" name="sale_amounts" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row m-t-5">
-                        <div class="col-md-3 text-right">
-                            <span>始发地:</span>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" id="location" name="location" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row m-t-5">
-                        <div class="col-md-3 text-right">
-                            <span>上架情况:</span>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="form-control" id="is_shelves" name="is_shelves">
-                                <option value="">请选择上架情况</option>
-                                <option value="0">上架</option>
-                                <option value="1">下架</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="row m-t-5">
-                        <div class="col-md-3 text-right">
-                            <span>商品图片:</span>
+                        <div class="row m-t-5">
+                            <div class="col-md-3 text-right">
+                                <span>商品图片:</span>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="file" style="display: none;" id="uploadImg" name="img" onchange="contentChange()">
+                                <button type="button" class="btn btn-info w-lg" onclick="uploadFile()">点击上传</button>
+                            </div>
                         </div>
-                        <div class="col-md-9">
-                            <input type="file" style="display: none;" id="uploadImg" name="img" onchange="contentChange()">
-                            <button class="btn btn-info" onclick="uploadFile()">点击上传</button>
-                        </div>
-                    </div>
 
-                    <div class="row m-t-5">
-                        <div class="col-md-3 text-right">
-                            <span>商品预览:</span>
+                        <div class="row m-t-5">
+                            <div class="col-md-3 text-right">
+                                <span>商品预览:</span>
+                            </div>
+                            <div class="col-md-9" id="priviewImg">
+                            </div>
                         </div>
-                        <div class="col-md-9" id="priviewImg">
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-info">保存</button>
+                    <button type="button" class="btn btn-info" onclick="submitForm()">保存</button>
                 </div>
             </div>
         </div>
@@ -265,7 +269,7 @@
 <script type="text/javascript">
     // 展开modal
     function editCommodity(id, name, price, express_price, sale_amounts, location, is_shelves, img) {
-        $('#editModal').attr('commdityId', id);
+        $('#hiddenId').val(id);
         var array = ['name', 'price', 'express_price', 'sale_amounts', 'location', 'is_shelves'];
         var defaultImg = "{{URL::asset('img/nothing.png')}}";
         for(var i = 0; i < array.length; i++) {
@@ -342,6 +346,31 @@
             image.height = 150*(height/width);
             image.hidden = null;
         };
+    }
+
+    // 修改表单提交
+    function submitForm() {
+        $('#updateForm').submit();
+    }
+
+    // 删除
+    function deleteCommodity(url) {
+        $.confirm({
+            title: '提示',
+            content: '确定删除该条数据吗？',
+            buttons: {   
+                ok: {
+                    text: "确定",
+                    btnClass: 'btn-primary',
+                    action: function(){
+                         location.href = url;
+                    }
+                },
+                cancel: {
+                    text: "取消", 
+                } 
+            }
+        });
     }
 </script>
 @endsection
