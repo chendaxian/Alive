@@ -1,5 +1,6 @@
 @extends('layouts.admin.base')
 @section('content')
+<link href="{{ asset('css/jquery-confirm.min.css') }}" rel="stylesheet">
 <style type="text/css">
     .overHidden {
         word-break:keep-all;
@@ -266,6 +267,7 @@
     </div>
 @endsection
 @section('bottom_script')
+<script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
 <script type="text/javascript">
     // 展开modal
     function editCommodity(id, name, price, express_price, sale_amounts, location, is_shelves, img) {

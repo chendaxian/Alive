@@ -14,8 +14,6 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-reset.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/jquery-confirm.min.css') }}" rel="stylesheet">
-
 
     <!--Animation css-->
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
@@ -95,7 +93,6 @@
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/modernizr.min.js') }}"></script>
