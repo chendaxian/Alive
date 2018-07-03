@@ -3,3 +3,8 @@
 /public/uploads
 /public/assets
 /vendor
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+.idea
