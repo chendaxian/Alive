@@ -18,59 +18,35 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    {{-- <div class="row">
-                        <form id="search_form" method="get" action="{{ route('admin.system.counsel_list.searchCounsel') }}">
-                                {{Form::token()}}
+                    <div class="row">
+                        <form id="search_form" method="get" action="">
+                                {{-- {{Form::token()}} --}}
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">咨询标题:</span>
+                                            <span style="font-weight:bold;font-size:16px;">商品名称:</span>
                                         </div>
                                         <div class="col-md-7">
-                                            <input type="text" name="title" class="form-control" value="{{$selOption['title']}}"/>
+                                            <input type="text" name="name" class="form-control" value=""/>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">咨询内容:</span>
+                                            <span style="font-weight:bold;font-size:16px;">商品始发地:</span>
                                         </div>
                                         <div class="col-md-7">
-                                            <input type="text" name="description" class="form-control" value="{{$selOption['description']}}"/>
+                                            <input type="text" name="description" class="form-control" value=""/>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">咨询人姓名:</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <input type="text" name="user_name" class="form-control"
-                                            value="{{$selOption['user_name']}}"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">处理人姓名:</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <input type="text" name="admin_name" class="form-control"
-                                            value="{{$selOption['user_name']}}"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row m-t-15">
-
-
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">咨询时间:</span>
+                                            <span style="font-weight:bold;font-size:16px;">物流价格:</span>
                                         </div>
                                         <div class="col-md-7">
                                             <input type="text" id="datepicker1" name="form_time" class="form-control"
-                                            value="{{$selOption['form_time']}}"/>
+                                            value=""/>
                                         </div>
                                     </div>
 
@@ -80,7 +56,29 @@
                                         </div>
                                         <div class="col-md-7">
                                             <input type="text" id="datepicker2" name="to_time" class="form-control"
-                                            value="{{$selOption['to_time']}}"/>
+                                            value=""/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row m-t-15">
+                                    <div class="col-md-3">
+                                        <div class="col-md-4 m-t-5">
+                                            <span style="font-weight:bold;font-size:16px;">商品售价:</span>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" id="datepicker1" name="form_time" class="form-control"
+                                            value=""/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="col-md-4 m-t-5">
+                                            <span style="font-weight:bold;font-size:16px;">至</span>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" id="datepicker2" name="to_time" class="form-control"
+                                            value=""/>
                                         </div>
                                     </div>
 
@@ -90,22 +88,57 @@
                                         </div>
                                         <div class="col-md-7">
                                             <select name="number" class="form-control">
-                                                <option value="10" {{$selOption['number'] == '10'?'selected':''}}>10</option>
-                                                <option value="50" {{$selOption['number'] == '50'?'selected':''}}>50</option>
-                                                <option value="100" {{$selOption['number'] == '100'?'selected':''}}>100</option>
-                                                <option value="150" {{$selOption['number'] == '150'?'selected':''}}>150</option>
-                                                <option value="200" {{$selOption['number'] == '200'?'selected':''}}>200</option>
-                                                <option value="500" {{$selOption['number'] == '500'?'selected':''}}>500</option>
+                                                <option value="10">10</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                                <option value="150">150</option>
+                                                <option value="200">200</option>
+                                                <option value="500">500</option>
                                             </select>
                                         </div>
                                     </div>
 
+                                    <div class="col-md-3">
+                                        <div class="col-md-4 m-t-5">
+                                            <span style="font-weight:bold;font-size:16px;">上架情况:</span>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <select name="number" class="form-control">
+                                                <option value="">请选择上架情况</option>
+                                                <option value="1">已上架</option>
+                                                <option value="0">已下架</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row m-t-15">
+                                    <div class="col-md-3">
+                                        <div class="col-md-4 m-t-5">
+                                            <span style="font-weight:bold;font-size:16px;">创建时间:</span>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" id="datepicker1" name="form_time" class="form-control"
+                                            value=""/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="col-md-4 m-t-5">
+                                            <span style="font-weight:bold;font-size:16px;">至</span>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" id="datepicker2" name="to_time" class="form-control"
+                                            value=""/>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-3 p-l-20 m-top-bottom-5">
-                                        <button type="button" class="btn btn-info w-lg" onclick="searchForm()">搜索</button>
+                                        <button type="button" class="btn btn-info w-lg" onclick="">搜索</button>
                                     </div>
                                 </div>
                             </form>
-                        </div> --}}
+                        </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="table-responsive">
@@ -143,6 +176,7 @@
                                                 <td>{{$v->created_at}}</td>
                                                 <td>
                                                     <button class="btn btn-info" onclick="editCommodity('{{$v->id}}', '{{$v->name}}', '{{$v->price}}', '{{$v->express_price}}', '{{$v->sale_amounts}}', '{{$v->location}}', '{{$v->is_shelves}}', '{{$v->img}}')">编辑</button>
+                                                    <button class="btn btn-success" onclick="">加入活动</button>
                                                     <button class="btn btn-danger" onclick="deleteCommodity('{{ route('commodityDelete', ['id' => $v->id]) }}')">删除</button>
                                                 </td>
                                             </tr>

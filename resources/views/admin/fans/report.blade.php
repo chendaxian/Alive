@@ -25,19 +25,19 @@
                                 <img src="{{URL::asset('img/footer.png')}}">
                             </div>
                             <div style="text-align: center;padding-top: 10px;">
-                                <span style="font-size: 20px;color: #5cb85c;">102</span>
+                                <span style="font-size: 18px;color: #5cb85c;">102</span>
                             </div>
                             <div style="text-align: center;padding-top: 15px;">
                                 <span style="font-size: 18px;color: #5cb85c;">昨日小程序新增用户</span>
                             </div>
                         </div>
 
-                        <div class="col-md-2 col-md-offset-1 showBox">
+                        <div class="col-md-2 showBox">
                             <div style="text-align: center;padding-top: 15px;">
                                 <img src="{{URL::asset('img/allUser.png')}}">
                             </div>
                             <div style="text-align: center;padding-top: 10px;">
-                                <span style="font-size: 20px;color: #f0ad4e;">15,896</span>
+                                <span style="font-size: 18px;color: #f0ad4e;">15,896</span>
                             </div>
                             <div style="text-align: center;padding-top: 15px;">
                                 <span style="font-size: 18px;color: #f0ad4e;">小程序粉丝总人数</span>
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="row" style="margin-top: 25px;">
-                        <div class="col-sm-7">
+                        <div class="col-sm-5">
                             <div id="chart-container1"></div>
                         </div>
 
@@ -84,7 +84,7 @@
                 slicingdistance: "15",
                 showpercentvalues: "1",
                 showpercentintooltip: "0",
-                plottooltext: "年龄分布: $label : $datavalue",
+                plottooltext: "年龄分布: $label : $datavalue人",
                 theme: "fint"
             },
             data: [
@@ -117,7 +117,7 @@
         dataFormat: 'json',
         dataSource: {
             "chart": {
-                "caption": "悦享小程序粉丝人数折线图",
+                "caption": "悦享小程序近20天粉丝增长人数折线图",
                 "linethickness": "2",
                 "showvalues": "0",
                 "formatnumberscale": "1",
