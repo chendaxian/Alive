@@ -26,7 +26,7 @@ class CommodityController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['img'] = $this->uploadImg($request->file('img'), '/uploads/');
+        $data['img'] = $this->uploadImg($request->file('img'), '/uploads/commodity/');
         $row = new Commodity();
         $row->create($data);
 
@@ -37,10 +37,15 @@ class CommodityController extends Controller
     {
         $data = $request->except('hiddenId');
         $id = $request->hiddenId;
+        $commodity = Commodity::findOrFail($id);
         if (isset($data['img'])) {
-            $data['img'] = $this->uploadImg($request->file('img'), '/uploads/');
+            $data['img'] = $this->uploadImg($request->file('img'), '/uploads/commodity/');
+            // 删除原有的图片文件
+            $path = $commodity->img;
+            $path = substr($path, strpos($path, 'uploads/commodity'));
+            unlink(public_path().'/'.$path);
         }
-        Commodity::findOrFail($id)->update($data);
+        $commodity->update($data);
         return redirect(route('commodities'));
     }
 

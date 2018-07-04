@@ -20,13 +20,13 @@ trait UploadFile
         $picName = str_random(40).'.'.$file->getClientOriginalExtension();
 
         if ($size > 100) {
-            $path = public_path($path).$picName;
+            $savePath = public_path($path).$picName;
             Image::make($file->getRealPath())->resize(400, null, function($constraint){
                 $constraint->aspectRatio();
-            })->save($path);
+            })->save($savePath);
         } else {
             $file->move(public_path().$path, $picName);
         }
-        return url('uploads/'.$picName);
+        return url($path.$picName);
     }
 }
