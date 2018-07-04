@@ -143,9 +143,7 @@
                                                 <td>{{$v->created_at}}</td>
                                                 <td>
                                                     <button class="btn btn-info" onclick="editCommodity('{{$v->id}}', '{{$v->name}}', '{{$v->price}}', '{{$v->express_price}}', '{{$v->sale_amounts}}', '{{$v->location}}', '{{$v->is_shelves}}', '{{$v->img}}')">编辑</button>
-                                                    {{-- <a href="{{ route('commodityDelete', ['id' => $v->id]) }}"> --}}
-                                                        <button class="btn btn-danger" onclick="deleteCommodity('{{ route('commodityDelete', ['id' => $v->id]) }}')">删除</button>
-                                                    {{-- </a> --}}
+                                                    <button class="btn btn-danger" onclick="deleteCommodity('{{ route('commodityDelete', ['id' => $v->id]) }}')">删除</button>
                                                 </td>
                                             </tr>
                                         @endforeach()

@@ -1,5 +1,6 @@
 @extends('layouts.admin.base')
 @section('content')
+<link href="{{ asset('css/jquery-confirm.min.css') }}" rel="stylesheet">
 <style type="text/css">
     .alignRight {
         text-align: right;
@@ -25,7 +26,6 @@
                                         <tr>
                                             <th>序</th>
                                             <th>类别名称</th>
-                                            {{-- <th>类别图片</th> --}}
                                             <th>创建时间</th>
                                             <th>操作</th>
                                         </tr>
@@ -36,11 +36,10 @@
                                             <tr>
                                                 <td>{{$v->id}}</td>
                                                 <td style="max-width: 200px;" class="overHidden">{{$v->name}}</td>
-                                                {{-- <td></td> --}}
                                                 <td>{{$v->created_at}}</td>
                                                 <td>
-                                                    <button class="btn btn-info" onclick="editCommodity('{{$v->id}}', '{{$v->name}}', '{{$v->price}}', '{{$v->express_price}}', '{{$v->sale_amounts}}', '{{$v->location}}', '{{$v->is_shelves}}', '{{$v->img}}')">编辑</button>
-                                                    <button class="btn btn-danger" onclick="deleteCommodity('{{ route('commodityDelete', ['id' => $v->id]) }}')">删除</button>
+                                                    <button class="btn btn-info" onclick="editCommodity('{{$v->id}}', '{{$v->name}}','{{$v->img}}')">编辑</button>
+                                                    <button class="btn btn-danger" onclick="deleteCommodity('{{ route('commodityTypesDelete', ['id' => $v->id]) }}')">删除</button>
                                                 </td>
                                             </tr>
                                         @endforeach()
@@ -68,9 +67,82 @@
             </div>
         </div>
     </div>
+
+    {{-- 编辑模态框 --}}
+    <div class="modal fade" id="editModal" commdityId="" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">商品类别编辑预览</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="updateForm" method="post" action="{{ route('commodityTypesUpdate') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-md-2 text-right">
+                                <span>类别名称:</span>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="hidden" id="hiddenId" name="hiddenId">
+                                <input class="form-control" id="name" name="name">
+                            </div>
+                        </div>
+
+                        <div class="row m-t-10">
+                            <div class="col-md-2 text-right">
+                                <span>类别图片:</span>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="file" style="display: none;" id="uploadImg" name="img" onchange="contentChange()">
+                                <button type="button" class="btn btn-info w-lg" onclick="uploadFile()">点击上传</button>
+                            </div>
+                        </div>
+
+                        <div class="row m-t-10">
+                            <div class="col-md-2 text-right">
+                                <span>图片预览:</span>
+                            </div>
+                            <div class="col-md-9" id="priviewImg">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-info" onclick="submitForm()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('bottom_script')
+<script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
 <script type="text/javascript">
+    function editCommodity(id, name, img) {
+        $('#hiddenId').val(id);
+        $('#name').val(name);
+        var defaultImg = "{{URL::asset('img/nothing.png')}}";
+
+        if (!img) {
+            var image = "<img width='150px' height='112px' src='"+defaultImg+"'>";
+        } else {
+            var image = new Image();
+            image.src = img;
+            image.hidden = 'hidden';
+
+            image.onload = function () {
+                var width = image.width, height = image.height;
+                image.width = 150;
+                image.height = 150*(height/width);
+                image.hidden = null;
+            };
+        }
+        $('#priviewImg').html('');
+        $('#priviewImg').append(image);
+        $('#editModal').modal('show');
+    }
+
     function uploadFile() {
         $('#uploadImg').click();
     }
@@ -105,6 +177,31 @@
                 image.hidden = null;
             };
         }
+    }
+
+    // 删除
+    function deleteCommodity(url) {
+        $.confirm({
+            title: '提示',
+            content: '确定删除该条数据吗？',
+            buttons: {   
+                ok: {
+                    text: "确定",
+                    btnClass: 'btn-primary',
+                    action: function(){
+                         location.href = url;
+                    }
+                },
+                cancel: {
+                    text: "取消", 
+                } 
+            }
+        });
+    }
+
+    // 修改表单提交
+    function submitForm() {
+        $('#updateForm').submit();
     }
 </script>
 @endsection

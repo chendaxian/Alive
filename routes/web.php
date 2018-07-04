@@ -34,5 +34,7 @@ Route::group([
     $router::get('/commodityTypes', ['as'=>'commodityTypes', 'uses'=>'CommodityTypesController@index']);
     $router::get('/commodityTypesAdd', ['as'=>'commodityTypesAdd', 'uses'=>'CommodityTypesController@add']);
     $router::post('/commodityTypesStore', ['as'=>'commodityTypesStore', 'uses'=>'CommodityTypesController@store']);
+    $router::get('/commodityTypesDelete/{id}', ['as'=>'commodityTypesDelete', 'uses'=>'CommodityTypesController@delete']);
+    $router::post('/commodityTypesUpdate', ['as'=>'commodityTypesUpdate', 'uses'=>'CommodityTypesController@update']);
 });
 

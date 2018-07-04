@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Commodity;
 use App\Traits\UploadFile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class CommodityController extends Controller
 {

@@ -31,4 +31,26 @@ class CommodityTypesController extends Controller
 
         return redirect(route('commodityTypes'));
     }
+
+    public function delete($id)
+    {
+        CommodityType::find($id)->delete();
+        return redirect(route('commodityTypes'));
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->except('hiddenId');
+        $id = $request->hiddenId;
+        $commodityType = CommodityType::findOrFail($id);
+        if (isset($data['img'])) {
+            $data['img'] = $this->uploadImg($request->file('img'), '/uploads/commodityType/');
+            // 删除原有的图片文件
+            $path = $commodityType->img;
+            $path = substr($path, strpos($path, 'uploads/commodityType'));
+            unlink(public_path().'/'.$path);
+        }
+        $commodityType->update($data);
+        return redirect(route('commodityTypes'));
+    }
 }
