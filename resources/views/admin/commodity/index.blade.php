@@ -172,7 +172,7 @@
                                                 </td>
                                                 <td>{{$v->created_at}}</td>
                                                 <td>
-                                                    <button class="btn btn-info" onclick="editCommodity('{{$v->id}}', '{{$v->name}}', '{{$v->price}}', '{{$v->express_price}}', '{{$v->sale_amounts}}', '{{$v->location}}', '{{$v->is_shelves}}', '{{$v->img}}')">编辑</button>
+                                                    <button class="btn btn-info" onclick="editCommodity('{{$v->id}}', '{{$v->name}}', '{{$v->price}}', '{{$v->express_price}}', '{{$v->sale_amounts}}', '{{$v->location}}', '{{$v->is_shelves}}', '{{$v->img}}', '{{$v->commodity_types}}')">编辑</button>
                                                     <button class="btn btn-success" onclick="showEnterActivity({{$v->id}})">加入活动</button>
                                                     <button class="btn btn-danger" onclick="deleteCommodity('{{ route('commodityDelete', ['id' => $v->id]) }}')">删除</button>
                                                 </td>
@@ -221,6 +221,18 @@
                             <div class="col-md-9">
                                 <input type="hidden" id="hiddenId" name="hiddenId">
                                 <input class="form-control" id="name" name="name">
+                            </div>
+                        </div>
+                        <div class="row m-t-5">
+                            <div class="col-md-3 text-right">
+                                <span>商品类别:</span>
+                            </div>
+                            <div class="col-md-9">
+                                <select class="form-control" id="commodity_types" name="commodity_types">
+                                    <option value="">请选择商品类别</option>
+                                    <option value="1">水果大王</option>
+                                    <option value="2">蔬菜大王</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row m-t-5">
@@ -311,7 +323,6 @@
                         <div class="col-md-9">
                             <input id="commodity_id" type="hidden" name="commodity_id">
                             <select id="activity_id" name="activity_id" class="form-control">
-                                <option value="">请选择活动</option>
                             </select>
                         </div>
                     </div>
@@ -346,9 +357,9 @@
         }
     });
     // 展开modal
-    function editCommodity(id, name, price, express_price, sale_amounts, location, is_shelves, img) {
+    function editCommodity(id, name, price, express_price, sale_amounts, location, is_shelves, img, commodity_types) {
         $('#hiddenId').val(id);
-        var array = ['name', 'price', 'express_price', 'sale_amounts', 'location', 'is_shelves'];
+        var array = ['name', 'price', 'express_price', 'sale_amounts', 'location', 'is_shelves', 'commodity_types'];
         var defaultImg = "{{URL::asset('img/nothing.png')}}";
         for(var i = 0; i < array.length; i++) {
             $('#'+array[i]).val(eval(array[i]));
@@ -459,10 +470,11 @@
             success: function(data){
                 if (data.length != 0) {
                     $('#commodity_id').val(id);
-                    var html = '';
+                    var html = '<option value="">请选择活动</option>';
                     $.each(data, function(index, item) {
                         html += "<option value='"+item.id+"'>"+item.name+"</option>";
                     });
+                    $('#activity_id').html('');
                     $('#activity_id').append(html);
                     $('#activityModal').modal('show');
                 } else {

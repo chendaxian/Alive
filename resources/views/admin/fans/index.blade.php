@@ -136,6 +136,7 @@
                                                 <td>{{$v->city}}</td>
                                                 <td>{{$v->created_at}}</td>
                                                 <td>
+                                                    <button class="btn btn-info">下单情况</button>
                                                 </td>
                                             </tr>
                                         @endforeach()

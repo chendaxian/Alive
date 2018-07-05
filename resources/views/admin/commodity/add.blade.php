@@ -30,6 +30,20 @@
 
                         <div class="row m-t-15">
                             <div class="form-group">
+                                <label for="wechat_name" class="control-label col-lg-2 alignRight">商品类别:</label>
+                                <div class="col-lg-4">
+                                    <select class="form-control" name="commodity_types">
+                                        <option value="">请选择商品类别</option>
+                                        @foreach($type as $v)
+                                        <option value="{{$v->id}}">{{$v->name}}</option>
+                                        @endforeach()
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row m-t-15">
+                            <div class="form-group">
                                 <label for="wechat_name" class="control-label col-lg-2 alignRight">商品售价(￥):</label>
                                 <div class="col-lg-4">
                                     <input class="form-control" name="price">

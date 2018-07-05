@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Commodity;
+use App\Models\CommodityType;
 use App\Repositories\Admin\CommodityRepository;
 use App\Traits\UploadFile;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class CommodityController extends Controller
 
     public function add()
     {
-        return view('admin/commodity/add');
+        $type = CommodityType::select('id', 'name')->get();
+        return view('admin/commodity/add', compact('type'));
     }
 
     public function store(Request $request)
