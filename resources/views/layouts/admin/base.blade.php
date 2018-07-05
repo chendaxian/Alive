@@ -95,7 +95,7 @@
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/modernizr.min.js') }}"></script>
+{{-- <script src="{{ asset('js/modernizr.min.js') }}"></script> --}}
 <script src="{{ asset('js/pace.min.js') }}"></script>
 <script src="{{ asset('js/wow.min.js') }}"></script>
 <script src="{{ asset('js/jquery.scrollTo.min.js') }}"></script>
@@ -116,30 +116,30 @@
 <script src="{{ asset('assets/c3-chart/d3.v3.min.js') }}"></script>
 <script src="{{ asset('assets/c3-chart/c3.js') }}"></script>
 
-<!--Morris Chart-->
-<script src="{{ asset('assets/morris/morris.min.js') }}"></script>  
-<script src="{{ asset('assets/morris/raphael.min.js') }}"></script>
+<!--Morris Chart--> 
+{{-- <script src="{{ asset('assets/morris/morris.min.js') }}"></script>   --}}
+{{-- <script src="{{ asset('assets/morris/raphael.min.js') }}"></script> --}}
 
 <!-- sparkline -->
-<script src="{{ asset('assets/sparkline-chart/jquery.sparkline.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/sparkline-chart/chart-sparkline.js') }}" type="text/javascript"></script>
+{{-- <script src="{{ asset('assets/sparkline-chart/jquery.sparkline.min.js') }}" type="text/javascript"></script> --}}
+{{-- <script src="{{ asset('assets/sparkline-chart/chart-sparkline.js') }}" type="text/javascript"></script> --}}
 
 <!-- sweet alerts -->
-<script src="{{ asset('assets/sweet-alert/sweet-alert.min.js') }}"></script>
-<script src="{{ asset('assets/sweet-alert/sweet-alert.init.js') }}"></script>
+{{-- <script src="{{ asset('assets/sweet-alert/sweet-alert.min.js') }}"></script> --}}
+{{-- <script src="{{ asset('assets/sweet-alert/sweet-alert.init.js') }}"></script> --}}
 
 <script src="{{ asset('js/jquery.app.js') }}"></script>
 <!-- Chat -->
 <script src="{{ asset('js/jquery.chat.js') }}"></script>
 <!-- Dashboard -->
-<script src="{{ asset('js/jquery.dashboard.js') }}"></script>
+{{-- <script src="{{ asset('js/jquery.dashboard.js') }}"></script> --}}
 
 <!-- Todo -->
 <script src="{{ asset('js/jquery.todo.js') }}"></script>
 
-<script src="{{ asset('assets/modal-effect/js/classie.js') }}"></script>
-<script src="{{ asset('assets/modal-effect/js/modalEffects.js') }}"></script>
-<script src="{{ asset('js/wangEditor.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/modal-effect/js/classie.js') }}"></script> --}}
+{{-- <script src="{{ asset('assets/modal-effect/js/modalEffects.js') }}"></script> --}}
+{{-- <script src="{{ asset('js/wangEditor.min.js') }}"></script> --}}
 <script type="text/javascript">
     /* ==============================================
      Counter Up

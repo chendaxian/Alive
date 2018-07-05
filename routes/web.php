@@ -30,11 +30,20 @@ Route::group([
     $router::post('/commodityStore', ['as'=>'commodityStore', 'uses'=>'CommodityController@store']);
     $router::post('/commodityUpdate', ['as'=>'commodityUpdate', 'uses'=>'CommodityController@update']);
     $router::get('/commodityDelete/{id}', ['as'=>'commodityDelete', 'uses'=>'CommodityController@delete']);
+    $router::get('/commoditySearch', ['as'=>'commoditySearch', 'uses'=>'CommodityController@search']);
     // 商品类别管理
     $router::get('/commodityTypes', ['as'=>'commodityTypes', 'uses'=>'CommodityTypesController@index']);
     $router::get('/commodityTypesAdd', ['as'=>'commodityTypesAdd', 'uses'=>'CommodityTypesController@add']);
     $router::post('/commodityTypesStore', ['as'=>'commodityTypesStore', 'uses'=>'CommodityTypesController@store']);
     $router::get('/commodityTypesDelete/{id}', ['as'=>'commodityTypesDelete', 'uses'=>'CommodityTypesController@delete']);
     $router::post('/commodityTypesUpdate', ['as'=>'commodityTypesUpdate', 'uses'=>'CommodityTypesController@update']);
+    // 活动管理
+    $router::get('/activities', ['as'=>'activities', 'uses'=>'ActivityController@index']);
+    $router::get('/activitiesAdd', ['as'=>'activitiesAdd', 'uses'=>'ActivityController@add']);
+    $router::post('/activitiesStore', ['as'=>'activitiesStore', 'uses'=>'ActivityController@store']);
+    $router::get('/activitiesDelete/{id}', ['as'=>'activitiesDelete', 'uses'=>'ActivityController@delete']);
+    $router::post('/activitiesUpdate', ['as'=>'activitiesUpdate', 'uses'=>'ActivityController@update']);
+    $router::get('/getActivities', ['as'=>'getActivities', 'uses'=>'ActivityController@getActivities']);
+    $router::post('/addCommodityToActivity', ['as'=>'addCommodityToActivity', 'uses'=>'ActivityController@addCommodityToActivity']);
 });
 

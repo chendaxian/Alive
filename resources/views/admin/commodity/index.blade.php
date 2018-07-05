@@ -19,126 +19,123 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <form id="search_form" method="get" action="">
-                                {{-- {{Form::token()}} --}}
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">商品名称:</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <input type="text" name="name" class="form-control" value=""/>
-                                        </div>
+                        <form id="search_form" method="get" action="{{ route('commoditySearch') }}">
+                            {{ csrf_field() }}
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">商品名称:</span>
                                     </div>
-
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">商品始发地:</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <input type="text" name="description" class="form-control" value=""/>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">物流价格:</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <input type="text" id="datepicker1" name="form_time" class="form-control"
-                                            value=""/>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">至</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <input type="text" id="datepicker2" name="to_time" class="form-control"
-                                            value=""/>
-                                        </div>
+                                    <div class="col-md-7">
+                                        <input type="text" name="name" class="form-control" value="{{$selOption['name']?$selOption['name']:''}}"/>
                                     </div>
                                 </div>
 
-                                <div class="row m-t-15">
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">商品售价:</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <input type="text" id="datepicker1" name="form_time" class="form-control"
-                                            value=""/>
-                                        </div>
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">商品始发地:</span>
                                     </div>
-
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">至</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <input type="text" id="datepicker2" name="to_time" class="form-control"
-                                            value=""/>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">分页条目:</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <select name="number" class="form-control">
-                                                <option value="10">10</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                                <option value="150">150</option>
-                                                <option value="200">200</option>
-                                                <option value="500">500</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">上架情况:</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <select name="number" class="form-control">
-                                                <option value="">请选择上架情况</option>
-                                                <option value="1">已上架</option>
-                                                <option value="0">已下架</option>
-                                            </select>
-                                        </div>
+                                    <div class="col-md-7">
+                                        <input type="text" name="location" class="form-control" value="{{$selOption['location']?$selOption['location']:''}}"/>
                                     </div>
                                 </div>
 
-                                <div class="row m-t-15">
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">创建时间:</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <input type="text" id="datepicker1" name="form_time" class="form-control"
-                                            value=""/>
-                                        </div>
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">物流价格:</span>
                                     </div>
-
-                                    <div class="col-md-3">
-                                        <div class="col-md-4 m-t-5">
-                                            <span style="font-weight:bold;font-size:16px;">至</span>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <input type="text" id="datepicker2" name="to_time" class="form-control"
-                                            value=""/>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3 p-l-20 m-top-bottom-5">
-                                        <button type="button" class="btn btn-info w-lg" onclick="">搜索</button>
+                                    <div class="col-md-7">
+                                        <input type="text" name="form_express_price" class="form-control"
+                                        value="{{$selOption['form_express_price']?$selOption['form_express_price']:''}}"/>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">至</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" name="to_express_price" class="form-control"
+                                        value="{{$selOption['to_express_price']?$selOption['to_express_price']:''}}"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row m-t-15">
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">商品售价:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" name="form_price" class="form-control"
+                                        value="{{$selOption['form_price']?$selOption['form_price']:''}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">至</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" name="to_price" class="form-control"
+                                        value="{{$selOption['to_price']?$selOption['to_price']:''}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">分页条目:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select name="number" class="form-control">
+                                            <option value="10" {{$selOption['number'] == 10 ?'selected':''}}>10</option>
+                                            <option value="50" {{$selOption['number'] == 50 ?'selected':''}}>50</option>
+                                            <option value="100" {{$selOption['number'] == 100 ?'selected':''}}>100</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">上架情况:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select name="is_shelves" class="form-control">
+                                            <option value="2" {{$selOption['is_shelves'] == 2 ?'selected':''}}>请选择上架情况</option>
+                                            <option value="1" {{$selOption['is_shelves'] == 1 ?'selected':''}}>已上架</option>
+                                            <option value="0" {{$selOption['is_shelves'] == 0 ?'selected':''}}>未上架</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row m-t-15">
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">创建时间:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" id="datepicker1" name="form_time" class="form-control"
+                                        value="{{$selOption['form_time']?$selOption['form_time']:''}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">至</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" id="datepicker2" name="to_time" class="form-control"
+                                        value="{{$selOption['to_time']?$selOption['to_time']:''}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 p-l-20 m-top-bottom-5">
+                                    <button class="btn btn-info w-lg">搜索</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="table-responsive">
@@ -176,13 +173,13 @@
                                                 <td>{{$v->created_at}}</td>
                                                 <td>
                                                     <button class="btn btn-info" onclick="editCommodity('{{$v->id}}', '{{$v->name}}', '{{$v->price}}', '{{$v->express_price}}', '{{$v->sale_amounts}}', '{{$v->location}}', '{{$v->is_shelves}}', '{{$v->img}}')">编辑</button>
-                                                    <button class="btn btn-success" onclick="">加入活动</button>
+                                                    <button class="btn btn-success" onclick="showEnterActivity({{$v->id}})">加入活动</button>
                                                     <button class="btn btn-danger" onclick="deleteCommodity('{{ route('commodityDelete', ['id' => $v->id]) }}')">删除</button>
                                                 </td>
                                             </tr>
                                         @endforeach()
                                     @else
-                                        <td colspan="8" style="text-align: center;">@暂无数据</td>
+                                        <td colspan="9" style="text-align: center;">@暂无数据</td>
                                     @endif
                                     </tbody>
                                 </table>
@@ -297,10 +294,57 @@
             </div>
         </div>
     </div>
+
+    {{-- 假如活动模态框 --}}
+    <div class="modal fade" id="activityModal" commdityId="" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">商品加入活动</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-2 m-t-5 text-right">
+                            <span>商品名称:</span>
+                        </div>
+                        <div class="col-md-9">
+                            <input id="commodity_id" type="hidden" name="commodity_id">
+                            <select id="activity_id" name="activity_id" class="form-control">
+                                <option value="">请选择活动</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-info" onclick="sureAdd()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('bottom_script')
 <script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.zh-CN.min.js')}}"></script>
 <script type="text/javascript">
+    $("#datepicker1").datepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        autoclose : true,
+    });
+    $("#datepicker2").datepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        autoclose : true,
+    });
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     // 展开modal
     function editCommodity(id, name, price, express_price, sale_amounts, location, is_shelves, img) {
         $('#hiddenId').val(id);
@@ -405,6 +449,85 @@
                 } 
             }
         });
+    }
+
+    function showEnterActivity(id) {
+        $.ajax({
+            url: "{{ route('getActivities') }}",
+            type:"get",  
+            dataType:"json",  
+            success: function(data){
+                if (data.length != 0) {
+                    $('#commodity_id').val(id);
+                    var html = '';
+                    $.each(data, function(index, item) {
+                        html += "<option value='"+item.id+"'>"+item.name+"</option>";
+                    });
+                    $('#activity_id').append(html);
+                    $('#activityModal').modal('show');
+                } else {
+                    $.confirm({
+                        title: '提示',
+                        content: '您暂未添加任何活动，请及时添加！',
+                        buttons: {
+                            OK: {
+                                btnClass: 'btn-primary',
+                            },
+                        }
+                    });
+                }
+            },
+            error: function(msg) {
+                $.confirm({
+                    title: '提示',
+                    content: '服务器错误请稍后再试！',
+                    buttons: {
+                        OK: {
+                            btnClass: 'btn-primary',
+                        },
+                    }
+                });
+            },
+
+        })
+    }
+
+    function sureAdd() {
+        $.ajax({
+            url: "{{ route('addCommodityToActivity') }}",
+            type:"post",  
+            dataType:"json",
+            data: {
+                activity_id: $('#activity_id').val(),
+                commodity_id: $('#commodity_id').val(),
+            },
+            success: function(data){
+                $.confirm({
+                    title: '提示',
+                    content: '您已添加成功，请在活动管理页面查看！',
+                    buttons: {
+                        OK: {
+                            btnClass: 'btn-primary',
+                            action: function () {
+                                $('#activityModal').modal('hide');
+                            }
+                        },
+                    }
+                });
+            },
+            error: function(msg) {
+                $.confirm({
+                    title: '提示',
+                    content: '服务器错误请稍后再试！',
+                    buttons: {
+                        OK: {
+                            btnClass: 'btn-primary',
+                        },
+                    }
+                });
+            },
+
+        })
     }
 </script>
 @endsection

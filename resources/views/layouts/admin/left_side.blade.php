@@ -75,17 +75,17 @@
         </ul>
 
         <ul class="list-unstyled">
-            <li class="has-submenu {{ in_array(Request::path(), [])?
+            <li class="has-submenu {{ in_array(Request::path(), ['admin/activities', 'admin/activitiesAdd'])?
                 'active': '' }}">
                 <a href="#"><i class="fa fa-institution"></i>
                     <span class="nav-label">活动管理</span>
                 </a>
                 <ul class="list-unstyled">
-                    <li class="{{ Request::path() == ''? 'active': '' }}">
-                        <a href="{{ route('commodities') }}">活动列表</a>
+                    <li class="{{ Request::path() == 'admin/activities'? 'active': '' }}">
+                        <a href="{{ route('activities') }}">活动列表</a>
                     </li>
-                    <li class="{{ Request::path() == ''? 'active': '' }}">
-                        <a href="{{ route('commodityAdd') }}">新增活动</a>
+                    <li class="{{ Request::path() == 'admin/activitiesAdd'? 'active': '' }}">
+                        <a href="{{ route('activitiesAdd') }}">新增活动</a>
                     </li>
                 </ul>
             </li>

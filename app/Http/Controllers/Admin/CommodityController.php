@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Commodity;
+use App\Repositories\Admin\CommodityRepository;
 use App\Traits\UploadFile;
 use Illuminate\Http\Request;
 
@@ -11,10 +12,17 @@ class CommodityController extends Controller
 {
     use UploadFile;
 
+    private $commodityRepo;
+
+    public function __construct(CommodityRepository $commodityRepo)
+    {
+        $this->commodityRepo = $commodityRepo;
+    }
+
     public function index()
     {
-        $data = Commodity::paginate(self::PAGINATENUM);
-        return view('admin/commodity/index', ['data'=>$data]);
+        $reciveData = $this->commodityRepo->searchCommodity();
+        return view('admin/commodity/index', ['data'=>$reciveData['data'], 'selOption'=>$reciveData['selOption']]);
     }
 
     public function add()
@@ -52,5 +60,11 @@ class CommodityController extends Controller
     {
         Commodity::find($id)->delete();
         return redirect(route('commodities'));
+    }
+
+    public function search(Request $request)
+    {
+        $reciveData = $this->commodityRepo->searchCommodity($request->all());
+        return view('admin/commodity/index', ['data'=>$reciveData['data'], 'selOption'=>$reciveData['selOption']]);
     }
 }
