@@ -10,4 +10,9 @@ class Commodity extends Model
     use SoftDeletes;
     
     protected $guarded = [];
+
+    public function commodityType()
+    {
+        return $this->belongsTo('App\Models\CommodityType', 'commodity_types');
+    }
 }
