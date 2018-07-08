@@ -45,5 +45,12 @@ Route::group([
     $router::post('/activitiesUpdate', ['as'=>'activitiesUpdate', 'uses'=>'ActivityController@update']);
     $router::get('/getActivities', ['as'=>'getActivities', 'uses'=>'ActivityController@getActivities']);
     $router::post('/addCommodityToActivity', ['as'=>'addCommodityToActivity', 'uses'=>'ActivityController@addCommodityToActivity']);
+    $router::get('/getActivityCommodities/{id}', ['as'=>'getActivityCommodities', 'uses'=>'ActivityController@getActivityCommodities']);
+    $router::get('/deleteActivityCommodities/{id}', ['as'=>'deleteActivityCommodities', 'uses'=>'ActivityController@deleteActivityCommodities']);
+    $router::post('/updateActivityCommodities', ['as'=>'updateActivityCommodities', 'uses'=>'ActivityController@updateActivityCommodities']);
+    // 订单管理
+    $router::get('/orders', ['as'=>'orders', 'uses'=>'OrderController@index']);
+    $router::post('/updateReceiverInfo', ['as'=>'updateReceiverInfo', 'uses'=>'OrderController@updateReceiverInfo']);
+    $router::post('/setDelivery', ['as'=>'setDelivery', 'uses'=>'OrderController@setDelivery']);
 });
 

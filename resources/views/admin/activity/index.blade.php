@@ -51,7 +51,9 @@
                                                 <td>
                                                     <button class="btn btn-info" onclick="editCommodity('{{$v->id}}', '{{$v->name}}',
                                                     '{{$v->description}}','{{$v->img_index}}', '{{$v->img_detail}}')">编辑</button>
-                                                    <button class="btn btn-success">查看商品</button>
+                                                    <a href="{{ route('getActivityCommodities', ['id' => $v->id]) }}">
+                                                        <button class="btn btn-success">查看商品</button>
+                                                    </a>
                                                     <button class="btn btn-danger" onclick="deleteCommodity('{{ route('activitiesDelete', ['id' => $v->id]) }}')">删除</button>
                                                 </td>
                                             </tr>

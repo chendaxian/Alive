@@ -6,7 +6,7 @@ use App\Models\Scope\CreatedAtScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ActivityCommodity extends Model
+class Order extends Model
 {
     use SoftDeletes;
     
@@ -18,8 +18,13 @@ class ActivityCommodity extends Model
         static::addGlobalScope(new CreatedAtScope());
     }
 
-    public function commodityDetail()
+    public function commodities()
     {
-        return $this->belongsTo('App\Models\Commodity', 'commodity_id');
+        return $this->hasMany('App\Models\OrderDetail');
+    }
+
+    public function staff()
+    {
+        return $this->belongsTo('App\User');
     }
 }

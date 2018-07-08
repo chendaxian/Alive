@@ -13,14 +13,14 @@
             <li class="has-submenu {{ in_array(Request::path(), ['admin/fans', 'admin/fansReportForm'])?
                 'active': '' }}">
                 <a href="#"><i class="fa fa-users"></i>
-                    <span class="nav-label">人员管理</span>
+                    <span class="nav-label">客户管理</span>
                 </a>
                 <ul class="list-unstyled">
                     <li class="{{ Request::path() == 'admin/fans'? 'active': '' }}">
-                        <a href="{{ route('fans') }}">粉丝列表</a>
+                        <a href="{{ route('fans') }}">客户列表</a>
                     </li>
                     <li class="{{ Request::path() == 'admin/fansReportForm'? 'active': '' }}">
-                        <a href="{{ route('fansReportForm') }}">粉丝报表</a>
+                        <a href="{{ route('fansReportForm') }}">客户分析</a>
                     </li>
                 </ul>
             </li>
@@ -61,14 +61,17 @@
         </ul>
 
         <ul class="list-unstyled">
-            <li class="has-submenu {{ in_array(Request::path(), [])?
+            <li class="has-submenu {{ in_array(Request::path(), ['admin/orders'])?
                 'active': '' }}">
                 <a href="#"><i class="fa fa-copy"></i>
                     <span class="nav-label">订单管理</span>
                 </a>
                 <ul class="list-unstyled">
+                    <li class="{{ Request::path() == 'admin/orders'? 'active': '' }}">
+                        <a href="{{ route('orders') }}">订单列表</a>
+                    </li>
                     <li class="{{ Request::path() == ''? 'active': '' }}">
-                        <a href="{{ route('commodities') }}">订单列表</a>
+                        <a href="{{ route('commodities') }}">下单分析</a>
                     </li>
                 </ul>
             </li>
@@ -86,6 +89,51 @@
                     </li>
                     <li class="{{ Request::path() == 'admin/activitiesAdd'? 'active': '' }}">
                         <a href="{{ route('activitiesAdd') }}">新增活动</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled">
+            <li class="has-submenu {{ in_array(Request::path(), [])?
+                'active': '' }}">
+                <a href="#"><i class="fa fa-stack-exchange"></i>
+                    <span class="nav-label">轮播图管理</span>
+                </a>
+                <ul class="list-unstyled">
+                    <li class="{{ Request::path() == ''? 'active': '' }}">
+                        <a href="{{ route('commodities') }}">轮播图列表</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled">
+            <li class="has-submenu {{ in_array(Request::path(), [])?
+                'active': '' }}">
+                <a href="#"><i class="fa fa-server"></i>
+                    <span class="nav-label">优惠券管理</span>
+                </a>
+                <ul class="list-unstyled">
+                    <li class="{{ Request::path() == ''? 'active': '' }}">
+                        <a href="{{ route('commodities') }}">优惠券列表</a>
+                    </li>
+                    <li class="{{ Request::path() == ''? 'active': '' }}">
+                        <a href="{{ route('commodities') }}">新增优惠券</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled">
+            <li class="has-submenu {{ in_array(Request::path(), [])?
+                'active': '' }}">
+                <a href="#"><i class="fa fa-gear"></i>
+                    <span class="nav-label">系统设置</span>
+                </a>
+                <ul class="list-unstyled">
+                    <li class="{{ Request::path() == ''? 'active': '' }}">
+                        <a href="{{ route('commodities') }}">权限管理</a>
                     </li>
                 </ul>
             </li>

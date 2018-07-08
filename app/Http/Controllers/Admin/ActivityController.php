@@ -71,9 +71,35 @@ class ActivityController extends Controller
 
     public function addCommodityToActivity(Request $request)
     {
+        $data = $request->all();
         $row = new ActivityCommodity();
-        $row->create($request->all());
+        $lastRow = ActivityCommodity::where('activity_id', $request->activity_id)->orderBy('rank', 'desc')->first();
+        $data['rank'] = $lastRow->rank + 1;
+        $row->create($data);
 
+        return response()->json(['res'=>true]);
+    }
+
+    public function getActivityCommodities($id)
+    {
+        $activity = Activity::find($id);
+        $commodities = ActivityCommodity::where('activity_id', $id)->paginate(self::PAGINATENUM);
+        return view('admin/activity/activityDetail', compact(['commodities', 'activity']));
+    }
+
+    public function deleteActivityCommodities($id)
+    {
+        ActivityCommodity::findOrFail($id)->forceDelete();
+        return redirect()->back();
+    }
+
+    public function updateActivityCommodities(Request $request)
+    {
+        $row = ActivityCommodity::where('rank', $request->rank)->first();
+        if ($row) {
+            $row->update(['rank'=>$request->oldRank]);
+        }
+        ActivityCommodity::findOrFail($request->id)->update(['rank'=>$request->rank]);
         return response()->json(['res'=>true]);
     }
 }
