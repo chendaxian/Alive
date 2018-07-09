@@ -74,7 +74,11 @@ class ActivityController extends Controller
         $data = $request->all();
         $row = new ActivityCommodity();
         $lastRow = ActivityCommodity::where('activity_id', $request->activity_id)->orderBy('rank', 'desc')->first();
-        $data['rank'] = $lastRow->rank + 1;
+        if ($lastRow) {
+            $data['rank'] = $lastRow->rank + 1;
+        } else {
+            $data['rank'] = 1;
+        }
         $row->create($data);
 
         return response()->json(['res'=>true]);
