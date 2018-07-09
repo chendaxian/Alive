@@ -76,15 +76,12 @@
                                                 <td>{{$v->created_at}}</td>
                                                 <td>{{$v->staff->name}}</td>
                                                 <td>
-                                                    @if($v->express_number)
-                                                    @else
-                                                    <button class="btn btn-info" onclick="setDelivery({{$v->id}})">设置发货</button>
-                                                    @endif
+                                                      <button class="btn btn-info" onclick="setDelivery({{$v->id}})">设置发货</button>
                                                 </td>
                                             </tr>
                                         @endforeach()
                                     @else
-                                        <td colspan="5" style="text-align: center;">@暂无数据</td>
+                                        <td colspan="9" style="text-align: center;">@暂无数据</td>
                                     @endif
                                     </tbody>
                                 </table>
