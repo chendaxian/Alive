@@ -109,17 +109,17 @@
         </ul>
 
         <ul class="list-unstyled">
-            <li class="has-submenu {{ in_array(Request::path(), [])?
+            <li class="has-submenu {{ in_array(Request::path(), ['admin/coupons', 'admin/couponAdd'])?
                 'active': '' }}">
                 <a href="#"><i class="fa fa-server"></i>
                     <span class="nav-label">优惠券管理</span>
                 </a>
                 <ul class="list-unstyled">
-                    <li class="{{ Request::path() == ''? 'active': '' }}">
-                        <a href="{{ route('commodities') }}">优惠券列表</a>
+                    <li class="{{ Request::path() == 'admin/coupons'? 'active': '' }}">
+                        <a href="{{ route('coupons') }}">优惠券列表</a>
                     </li>
-                    <li class="{{ Request::path() == ''? 'active': '' }}">
-                        <a href="{{ route('commodities') }}">新增优惠券</a>
+                    <li class="{{ Request::path() == 'admin/couponAdd'? 'active': '' }}">
+                        <a href="{{ route('couponAdd') }}">新增优惠券</a>
                     </li>
                 </ul>
             </li>

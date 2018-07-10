@@ -52,5 +52,12 @@ Route::group([
     $router::get('/orders', ['as'=>'orders', 'uses'=>'OrderController@index']);
     $router::post('/updateReceiverInfo', ['as'=>'updateReceiverInfo', 'uses'=>'OrderController@updateReceiverInfo']);
     $router::post('/setDelivery', ['as'=>'setDelivery', 'uses'=>'OrderController@setDelivery']);
+    // 优惠券管理
+    $router::get('/coupons', ['as'=>'coupons', 'uses'=>'CouponController@index']);
+    $router::get('/couponAdd', ['as'=>'couponAdd', 'uses'=>'CouponController@add']);
+    $router::post('/couponStore', ['as'=>'couponStore', 'uses'=>'CouponController@store']);
+    $router::get('/couponDelete/{id}', ['as'=>'couponDelete', 'uses'=>'CouponController@delete']);
+    $router::post('/couponUpdate', ['as'=>'couponUpdate', 'uses'=>'CouponController@update']);
+    $router::post('/couponCheck', ['as'=>'couponCheck', 'uses'=>'CouponController@check']);
 });
 
