@@ -27,4 +27,9 @@ class Order extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function wechat()
+    {
+        return $this->belongsTo('App\Models\WechatUser', 'wechat_user_id');
+    }
 }

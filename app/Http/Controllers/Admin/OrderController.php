@@ -4,14 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Repositories\Admin\OrderRepository;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    private $orderRepo;
+
+    public function __construct(OrderRepository $orderRepo)
     {
-        $data = Order::paginate(self::PAGINATENUM);
-        return view('admin/order/index', compact(['data']));
+        $this->orderRepo = $orderRepo;
+    }
+
+    public function index(Request $request)
+    {
+        $data = $this->orderRepo->searchOrder($request->all());
+        return view('admin/order/index', ['data'=>$data['data'], 'selOption'=>$data['selOption']]);
     }
 
     public function updateReceiverInfo(Request $request)
@@ -26,7 +34,7 @@ class OrderController extends Controller
     {
         $row = Order::findOrFail($request->id);
         $data = $request->except('id');
-        $data['order_status'] = 4;
+        $data['order_status'] = 2;
         $data['staff_id'] = auth()->user()->id;
         $row->update($data);
 

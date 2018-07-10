@@ -26,12 +26,136 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
+                        <form id="search_form" method="get" action="{{ route('orders') }}">
+                            {{ csrf_field() }}
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">订单编号:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" name="order_number" class="form-control" value="{{$selOption['order_number']?$selOption['order_number']:''}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">物流编号:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" name="express_number" class="form-control" value="{{$selOption['express_number']?$selOption['express_number']:''}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">收货人姓名:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" name="receiver_name" class="form-control" value="{{$selOption['receiver_name']?$selOption['receiver_name']:''}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">操作员工:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select name="staff_id" class="form-control">
+                                            <option value="" >请选择操作员工</option>
+                                            <option value="1" {{$selOption['order_status'] == 1 ?'selected':''}}>陈大仙</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row m-t-15">
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">收货人电话:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" name="receiver_number" class="form-control" value="{{$selOption['receiver_number']?$selOption['receiver_number']:''}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">支付状态:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select name="pay_status" class="form-control">
+                                            <option value="" >请选择支付状态</option>
+                                            <option value="1" {{$selOption['order_status'] == 1 ?'selected':''}}>未支付</option>
+                                            <option value="2" {{$selOption['order_status'] == 2 ?'selected':''}}>已支付</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">下单时间:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" id="datepicker1" name="form_time" class="form-control"
+                                        value="{{$selOption['form_time']?$selOption['form_time']:''}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">至</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" id="datepicker2" value="{{$selOption['to_time']?$selOption['to_time']:''}}" name="to_time" class="form-control"
+                                        value=""/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row m-t-15">
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">订单状态:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select name="order_status" class="form-control">
+                                            <option value="">请选择订单状态</option>
+                                            <option value="-1" {{$selOption['order_status'] == -1 ?'selected':''}}>订单已取消</option>
+                                            <option value="1" {{$selOption['order_status'] == 1 ?'selected':''}}>新订单待发货</option>
+                                            <option value="2" {{$selOption['order_status'] == 2 ?'selected':''}}>已发货客户待收货</option>
+                                            <option value="3" {{$selOption['order_status'] == 3 ?'selected':''}}>订单已完成</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="col-md-4 m-t-5">
+                                        <span style="font-weight:bold;font-size:16px;">每页条目:</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select name="number" class="form-control">
+                                            <option value="10" {{$selOption['number'] == 10 ?'selected':''}}>10</option>
+                                            <option value="50" {{$selOption['number'] == 50 ?'selected':''}}>50</option>
+                                            <option value="100" {{$selOption['number'] == 100 ?'selected':''}}>100</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <button class="btn btn-info w-lg">搜索</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-12">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered m-t-15">
                                     <thead>
                                         <tr>
                                             <th>序</th>
+                                            <th>客户微信昵称</th>
                                             <th>订单编号</th>
                                             <th>收货信息</th>
                                             <th>商品支付信息</th>
@@ -47,6 +171,7 @@
                                         @foreach($data as $index=>$v)
                                             <tr>
                                                 <td>{{$v->index+1}}</td>
+                                                <td>{{$v->wechat->nick_name}}</td>
                                                 <td>{{$v->order_number}}</td>
                                                 <td>
                                                     <span style="color:#1ca8dd;cursor: pointer;" onclick="showReceiverInfo('{{$v->id}}', '{{$v->express_number}}', '{{$v->reveiver_name}}', '{{$v->reveiver_number}}', '{{$v->reveiver_address}}')">收货信息</span>
@@ -56,14 +181,14 @@
                                                         '{{$v->commodities}}')">商品信息</span>
                                                 </td>
                                                 <td>
-                                                    @if($v->order_status == 0)
-                                                    已取消
+                                                    @if($v->order_status == -1)
+                                                    订单已取消
                                                     @elseif($v->order_status == 1)
-                                                    待发货
-                                                    @elseif($v->order_status == 4)
-                                                    客户待收货
+                                                    新订单待发货
+                                                    @elseif($v->order_status == 2)
+                                                    已发货客户待收货
                                                     @else
-                                                    已完成
+                                                    订单已完成
                                                     @endif()
                                                 </td>
                                                 <td>
@@ -81,7 +206,7 @@
                                             </tr>
                                         @endforeach()
                                     @else
-                                        <td colspan="9" style="text-align: center;">@暂无数据</td>
+                                        <td colspan="10" style="text-align: center;">@暂无数据</td>
                                     @endif
                                     </tbody>
                                 </table>
@@ -253,8 +378,20 @@
 @endsection
 @section('bottom_script')
 <script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
-<script src="{{ asset('js/wangEditor.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.zh-CN.min.js')}}"></script>
 <script type="text/javascript">
+    $("#datepicker1").datepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        autoclose : true,
+    });
+    $("#datepicker2").datepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        autoclose : true,
+    });
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
