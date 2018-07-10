@@ -217,8 +217,8 @@
                     <form id="updateForm" method="post" action="{{ route('commodityUpdate') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
-                            <div class="col-md-3 text-right">
-                                <span>商品名称:</span>
+                            <div class="col-md-3 text-right m-t-5">
+                                <label>商品名称:</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="hidden" id="hiddenId" name="hiddenId">
@@ -226,8 +226,8 @@
                             </div>
                         </div>
                         <div class="row m-t-5">
-                            <div class="col-md-3 text-right">
-                                <span>商品类别:</span>
+                            <div class="col-md-3 text-right m-t-5">
+                                <label>商品类别:</label>
                             </div>
                             <div class="col-md-9">
                                 <select class="form-control" id="commodity_types" name="commodity_types">
@@ -238,40 +238,40 @@
                             </div>
                         </div>
                         <div class="row m-t-5">
-                            <div class="col-md-3 text-right">
-                                <span>商品售价(￥):</span>
+                            <div class="col-md-3 text-right m-t-5">
+                                <label>商品售价(￥):</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="text" id="price" name="price" class="form-control">
                             </div>
                         </div>
                         <div class="row m-t-5">
-                            <div class="col-md-3 text-right">
-                                <span>物流费用(￥):</span>
+                            <div class="col-md-3 text-right m-t-5">
+                                <label>物流费用(￥):</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="text" id="express_price" name="express_price" class="form-control">
                             </div>
                         </div>
                         <div class="row m-t-5">
-                            <div class="col-md-3 text-right">
-                                <span>商品销量:</span>
+                            <div class="col-md-3 text-right m-t-5">
+                                <label>商品销量:</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="text" id="sale_amounts" name="sale_amounts" class="form-control">
                             </div>
                         </div>
                         <div class="row m-t-5">
-                            <div class="col-md-3 text-right">
-                                <span>始发地:</span>
+                            <div class="col-md-3 text-right m-t-5">
+                                <label>始发地:</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="text" id="location" name="location" class="form-control">
                             </div>
                         </div>
                         <div class="row m-t-5">
-                            <div class="col-md-3 text-right">
-                                <span>上架情况:</span>
+                            <div class="col-md-3 text-right m-t-5">
+                                <label>上架情况:</label>
                             </div>
                             <div class="col-md-9">
                                 <select class="form-control" id="is_shelves" name="is_shelves">
@@ -283,8 +283,8 @@
                         </div>
 
                         <div class="row m-t-5">
-                            <div class="col-md-3 text-right">
-                                <span>商品图片:</span>
+                            <div class="col-md-3 text-right m-t-5">
+                                <label>商品图片:</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="file" style="display: none;" id="uploadImg" name="img" onchange="contentChange()">
@@ -293,8 +293,8 @@
                         </div>
 
                         <div class="row m-t-5">
-                            <div class="col-md-3 text-right">
-                                <span>商品预览:</span>
+                            <div class="col-md-3 text-right m-t-5">
+                                <label>商品预览:</label>
                             </div>
                             <div class="col-md-9" id="priviewImg">
                             </div>

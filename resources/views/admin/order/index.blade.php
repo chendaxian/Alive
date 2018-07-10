@@ -243,7 +243,7 @@
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-3 text-right m-t-5">
-                                <span>物流单号:</span>
+                                <label>物流单号:</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="hidden" name="hiddenId" id="receiverHiddenId">
@@ -253,7 +253,7 @@
 
                         <div class="row m-t-10">
                             <div class="col-md-3 text-right m-t-5">
-                                <span>收货人姓名:</span>
+                                <label>收货人姓名:</label>
                             </div>
                             <div class="col-md-9">
                                 <input class="form-control" id="reveiver_name" name="reveiver_name">
@@ -262,7 +262,7 @@
 
                         <div class="row m-t-10">
                             <div class="col-md-3 text-right m-t-5">
-                                <span>收货人电话:</span>
+                                <label>收货人电话:</label>
                             </div>
                             <div class="col-md-9">
                                 <input class="form-control" id="reveiver_number" name="reveiver_number">
@@ -271,7 +271,7 @@
 
                         <div class="row m-t-10">
                             <div class="col-md-3 text-right m-t-5">
-                                <span>收货地址:</span>
+                                <label>收货地址:</label>
                             </div>
                             <div class="col-md-9">
                                 <input class="form-control" id="reveiver_address" name="reveiver_address">

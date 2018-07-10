@@ -81,7 +81,7 @@
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-2 text-right">
-                                <span>类别名称:</span>
+                                <label>类别名称:</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="hidden" id="hiddenId" name="hiddenId">
@@ -91,7 +91,7 @@
 
                         <div class="row m-t-10">
                             <div class="col-md-2 text-right">
-                                <span>类别图片:</span>
+                                <label>类别图片:</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="file" style="display: none;" id="uploadImg" name="img" onchange="contentChange()">
@@ -101,7 +101,7 @@
 
                         <div class="row m-t-10">
                             <div class="col-md-2 text-right">
-                                <span>图片预览:</span>
+                                <label>图片预览:</label>
                             </div>
                             <div class="col-md-9" id="priviewImg">
                             </div>

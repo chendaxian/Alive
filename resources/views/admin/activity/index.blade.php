@@ -95,8 +95,8 @@
                     <form id="updateForm" method="post" action="{{ route('activitiesUpdate') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
-                            <div class="col-md-2 text-right">
-                                <span>活动名称:</span>
+                            <div class="col-md-2 text-right m-t-5">
+                                <label>活动名称:</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="hidden" id="hiddenId" name="hiddenId">
@@ -105,8 +105,8 @@
                         </div>
 
                         <div class="row m-t-10">
-                            <div class="col-md-2 text-right">
-                                <span>活动介绍:</span>
+                            <div class="col-md-2 text-right m-t-5">
+                                <label>活动介绍:</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="hidden" id="hiddenInput" name="description">
@@ -115,8 +115,8 @@
                         </div>
 
                         <div class="row m-t-10">
-                            <div class="col-md-2 text-right">
-                                <span>首页图片:</span>
+                            <div class="col-md-2 text-right m-t-5">
+                                <label>首页图片:</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="file" style="display: none;" id="uploadImg1" name="img_index" onchange="contentChange(1)">
@@ -125,8 +125,8 @@
                         </div>
 
                         <div class="row m-t-10">
-                            <div class="col-md-2 text-right">
-                                <span>详情图片:</span>
+                            <div class="col-md-2 text-right m-t-5">
+                                <label>详情图片:</label>
                             </div>
                             <div class="col-md-9">
                                 <input type="file" style="display: none;" id="uploadImg2" name="img_detail" onchange="contentChange(2)">
@@ -135,16 +135,16 @@
                         </div>
 
                         <div class="row m-t-10">
-                            <div class="col-md-2 text-right">
-                                <span>首页预览:</span>
+                            <div class="col-md-2 text-right m-t-5">
+                                <label>首页预览:</label>
                             </div>
                             <div class="col-md-9" id="priviewImg1">
                             </div>
                         </div>
 
                         <div class="row m-t-10">
-                            <div class="col-md-2 text-right">
-                                <span>详情预览:</span>
+                            <div class="col-md-2 text-right m-t-5">
+                                <label>详情预览:</label>
                             </div>
                             <div class="col-md-9" id="priviewImg2">
                             </div>
