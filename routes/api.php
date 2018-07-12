@@ -13,6 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+/* 无需认证的接口 */
+Route::group([
+        'namespace' => 'Api',
+    ], function ($router)
+{
+    // 获取商品信息
+    $router::get('/getCommodities', ['as'=>'getCommodities', 'uses'=>'CommodityController@index']);
+});
+
+/* 需要认证的用户交互接口 */
+Route::group([
+        'namespace' => 'Api',
+        'middleware' => 'wechatAuth'
+    ], function ($router)
+{
+
 });
